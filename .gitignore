@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.venv/
+venv/
+env/
+
+# IDEs
+.idea/
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Models and large assets
+models/*.pt
+*.task
+
+# Video and generated output
+*.mp4
+*.avi
+*.mov
+annotated_output.mp4
+
+# Session/runtime output
+session_log.json
+
+# OS files
+.DS_Store
+Thumbs.db
