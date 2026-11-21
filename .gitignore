@@ -13,12 +13,9 @@ env/
 # Jupyter
 .ipynb_checkpoints/
 
-# Models and large assets
-models/*.pt
-*.task
+
 
 # Video and generated output
-*.mp4
 *.avi
 *.mov
 annotated_output.mp4
