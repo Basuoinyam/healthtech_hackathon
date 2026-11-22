@@ -45,9 +45,16 @@ MAX_DT = 0.5
 
 # -------------------------- runtime config ---------------------------
 
-YOLO_WEIGHTS = r"D:\Lazy_eye\models\best (1).pt"
-VIDEO_SOURCE =0 #r"D:\HealthTech\test.mp4"
-LANDMARKER_PATH = r"D:\Lazy_eye\face_landmarker.task"
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+YOLO_WEIGHTS = os.getenv(
+    "YOLO_WEIGHTS",
+    os.path.join(PROJECT_DIR, "models", "best (1).pt")
+)
+VIDEO_SOURCE = 0
+LANDMARKER_PATH = os.getenv(
+    "LANDMARKER_PATH",
+    os.path.join(PROJECT_DIR, "face_landmarker.task")
+)
 
 OUTPUT_VIDEO = None  # "annotated_output.mp4"
 SHOW_WINDOW = True
@@ -579,13 +586,15 @@ def analyze(
 
     if len(patched) == 1:
 
-        info = eye_info(
-            mp,
-            landmarker,
-            frame,
-            ts_ms
-        )
-
+        if mp is not None and landmarker is not None:
+            info = eye_info(
+                mp,
+                landmarker,
+                frame,
+                ts_ms
+            )
+        else:
+            info = None
         if info:
 
             centers, blink = info
@@ -619,13 +628,15 @@ def analyze(
 
     elif len(normal) == 1 and len(patched) == 0:
 
-        info = eye_info(
-            mp,
-            landmarker,
-            frame,
-            ts_ms
-        )
-
+        if mp is not None and landmarker is not None:
+            info = eye_info(
+                mp,
+                landmarker,
+                frame,
+                ts_ms
+            )
+        else:
+            info = None
         if info:
 
             centers, blink = info

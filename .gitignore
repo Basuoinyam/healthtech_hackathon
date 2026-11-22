@@ -15,9 +15,10 @@ env/
 
 
 
-# Video and generated output
+# Local video and generated output
 *.avi
 *.mov
+*.mp4
 annotated_output.mp4
 
 # Session/runtime output
